@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"> 
+<title>My Website About Rune Divination</title>
+<script>
+
+function fitSize(){
+ document.getElementById("Navigation").style.height = (window.innerHeight-110) + "px";
+ document.getElementById("contentbox").style.height = (window.innerHeight-110) + "px";
+ document.getElementById("contentbox").style.width = (window.innerWidth-290) + "px";
+}
+
+function LoadPage(targetname){
+ document.getElementById("contentbox").src = targetname + '.html';
+}
+
+</script>
+</head>
+<body style="background-image:url(background.jpg);background-repeat: repeat-y; background-position: right top" onLoad="fitSize()" onResize="fitSize()">
+<div style="text-align:center;height:80px;width:100%;">
+<h1>My Website About Rune Divination</h1>
+</div>
+
+<div id="Navigation" style="height:100%;width:250px;float:left;overflow:auto">
+<b>Runes</b><br>
+<a href="#" onClick="javascript:LoadPage('Poems')">Learn about the runes</a><br>
+<a href="#" onClick="javascript:LoadPage('single%20rune')">Single Rune Reading</a><br>
+<a href="#" onClick="javascript:LoadPage('rune%20feed')">Live Rune Reading</a><br>
+<a href="#" onClick="javascript:LoadPage('Map')">Picture Spreads</a><br>
+<a href="#" onClick="javascript:LoadPage('PI%20Planner')">EVE Online PI Planner</a><br>
+<a href="#" onClick="javascript:LoadPage('Digital%20Light')">Digital Lights</a><br>
+<a href="#" onClick="javascript:LoadPage('concentric%20color')">Concentric Colors</a><br>
+<a href="#" onClick="javascript:LoadPage('Selected%20Radio')">Target Radio Chords, Montreal</a><br>
+<a href="#" onClick="javascript:LoadPage('Radio')">Montreal Radio Chords</a><br>
+<a href="#" onClick="javascript:LoadPage('New York')">New York Radio Chords</a><br>
+<a href="#" onClick="javascript:LoadPage('Sacramento')">Sacramento Radio Chords</a><br>
+<a href="#" onClick="javascript:LoadPage('Moscow')">Moscow Radio Chords</a><br>
+<a href="#" onClick="javascript:LoadPage('Kiev')">Kiev Radio Chords</a><br>
+<a href="#" onClick="javascript:LoadPage('Austin')">Austin Radio Chords</a><br>
+<a href="#" onClick="javascript:LoadPage('Philadelphia')">Philadelphia Radio Chords</a><br>
+<a href="#" onClick="javascript:LoadPage('Springfield')">Springfield Radio Chords</a><br>
+<a href="#" onClick="javascript:LoadPage('Binary/Binary')">Random Binary Chords 16 Bit</a><br>
+<a href="#" onClick="javascript:LoadPage('Binary%208/Binary%208')">Random Binary Chords 8 Bit</a><br>
+<a href="#" onClick="javascript:LoadPage('count')">Multiple Layer Relativity</a><br>
+</div>
+
+<div style="float:left;height:100px;width:100px">
+<iframe frameborder="0" id="contentbox" src="First Page.html">
+</iframe>
+</div>
+</body>
+</html>
