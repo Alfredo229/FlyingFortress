@@ -237,4 +237,7 @@ break;
    alert("other");
   break;
  }
+ name2 = new Array("Frey","Ur","Thorn","Os","Rad","Ken","Gyfu","Wyn",
+                   "Hagel","Nyd","Isa","Jera","Eoh","Pethro","Eloh","Sigel",
+                   "Tyr","Birch","Eh","Man","Lagu","Ing","Daeg","Odal");
 }
