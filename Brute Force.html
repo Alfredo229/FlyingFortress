@@ -5,10 +5,27 @@
 
 
 <script>
-//frequencyList = new Array(1057,925,985,977,1073,959,1007,1015,951,885,893,913,919,935,995,1063,943);
 frequencyList = new Array(885,893,913,925,935,943,951,959,969,977,985,995,1007,1015,1057,1063,1073);
 favoriteList = new Array(925,943,985,1057,1073,885,951,969,893,913,935,959,977,995,1007,1015,1063);
 primeList = new Array(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293, 307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397, 401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499);
+
+
+
+
+//looking to fit rhw break at the appropriate location. Some trouble with closing the sections. Will not complete properly. Possibly an execution flag.
+//removing the break for now.
+//something about resetting the variables.
+
+//fix the ratios. Balerrina got her panies in a bunch.
+
+
+
+
+
+
+
+
+
 
 /*++++++++++++++++++
 LOOP F
@@ -33,8 +50,6 @@ Commits if the precision is better. And on the same side of the main sweep index
 
 ++++++++++++++++++*/
 
-//************Might not need the 2nd instance of LOOP I and LOOP X
-
 //===============================
 function init(){
 	//#######
@@ -49,93 +64,83 @@ function init(){
 		myBrains = 0; 
 		mySeek = 0;
 		pointA = 0;
-//		pointA = Number(document.getElementById("mainAxis").value)-1;
 	//#######
 	//
 		theInput1 = Math.abs(Number(document.getElementById("ratio1").value));
 		theRatio1 = 1 / theInput1;
 	//#######
-	//*****************
-	//*****************LOOP Q
-	//*****************
-		for(q=0; q<primeList.length; q++){
-			theRatio2 = 1/primeList[q];
-	//*****************
-	//*****************LOOP F
-	//*****************
-		for(f=favoriteList.length; f >=0 ; f--){
+
+	//LOOP Q
+	for(q=0; q < primeList.length; q++){
+		if(primeList[q] > theInput1){
+			ratioB = theInput1 / primeList[q];
+		}else{
+			ratioB = primeList[q] / theInput1;
+		}
+
+		//LOOP F
+		for(f=0; f < favoriteList.length ; f++){
 			pointA = f;
-		//#######
-		//*********************
-		//*********************LOOP I
-		//*********************
-		//first sweep
+
+			//LOOP I
 			for(i=0; i < frequencyList.length; i++){
-				if(i != pointA){
-					offsetA = Math.abs((favoriteList[pointA] - frequencyList[i]));
-					targetOffset = offsetA * theRatio1;
-				//**********************
-				//**********************LOOP X
-				//**********************
-					for(x=0 ;x < frequencyList.length ;x++){
-						if(i != x && i != pointA){
-							offsetB = Math.abs(favoriteList[pointA] - frequencyList[x]);
-							offsetB *= theRatio2;
-							calculatedOffset = Math.abs(targetOffset - offsetB);
-							if((favoriteList[pointA] < frequencyList[i]) && (favoriteList[pointA] < frequencyList[x]))
-								validate();
-							if((favoriteList[pointA] > frequencyList[i]) && (favoriteList[pointA] > frequencyList[x]))
-								validate();
+				offset00 = Math.abs(favoriteList[pointA] - frequencyList[i]);
+
+				//LOOP J
+				for(j=0; j < frequencyList.length; j++){
+					offset01 = Math.abs(favoriteList[pointA] - frequencyList[j]);
+					if(i != j && j != pointA){
+						if(offset00 > offset01){
+							ratioA = offset01 / offset00;
+						}else{
+							ratioA = offset00 / offset01;
 						}
+						calculatedOffset = Math.abs(ratioA - ratioB);
+
+						if((favoriteList[pointA] < frequencyList[i]) && (favoriteList[pointA] < frequencyList[j]))
+							validate();
+						if((favoriteList[pointA] > frequencyList[i]) && (favoriteList[pointA] > frequencyList[j]))
+							validate();
 					}
 				}
 			}
 		}
-		if(result[0] <= 0)
-			break;
 	}
+	update();
 }
 
-//===============================
-/*Sweeps the 5 result array and pushes down if there's a match
-needs to swipe the array and keep pushing the higher numbers until... no
-Start at the best result then push if it finds something higher (golf)*/
 function validate(){
-	if(calculatedOffset <= result[0]){
-		//moves the object up one on the precision scale
+	if(calculatedOffset < result[0]){
 		for(g=2; g>0; g--){
 			result[g] = result[g-1]
 			resultIndexA[g] = resultIndexA[g-1];
 			resultIndexB[g] = resultIndexB[g-1];
 			resultIndexC[g] = resultIndexC[g-1];
 		}
-
-		//assigns the new value
 		result[0] = calculatedOffset;
-		resultIndexA[0] = x;
+		resultIndexA[0] = f;
 		resultIndexB[0] = i;
 		resultIndexC[0] = pointA;
 	}
+}
 
-//Updates the results
-resultString = '';
-frequencyA = '';
-frequencyB = '';
-frequencyC = '';
-for(g=0; g<3; g++){
-	 resultString += result[g] + ' ';
-	 frequencyA += frequencyList[resultIndexA[g]] + ' ';
-	 frequencyB += frequencyList[resultIndexB[g]] + ' ';
-	 frequencyC += favoriteList[resultIndexC[g]] + ' ';
-	}
-
-	document.getElementById("mainOutput1").innerHTML = result[0];
-	document.getElementById("mainOutput2").innerHTML = result[1];
-	document.getElementById("mainOutput3").innerHTML = result[2];
-	document.getElementById("mainOutput4").innerHTML = frequencyA;
-	document.getElementById("mainOutput5").innerHTML = frequencyB;
-	document.getElementById("mainOutput6").innerHTML = frequencyC;
-}</script>
+function update(){
+	frequencyA = '';
+	frequencyB = '';
+	frequencyC = '';
+	for(g=0; g<3; g++){
+			frequencyA += frequencyList[resultIndexA[g]] + ' ';
+			frequencyB += frequencyList[resultIndexB[g]] + ' ';
+			frequencyC += favoriteList[resultIndexC[g]] + ' ';
+			}
+		document.getElementById("mainOutput1").innerHTML = result[0];
+		document.getElementById("mainOutput2").innerHTML = result[1];
+		document.getElementById("mainOutput3").innerHTML = result[2];
+		document.getElementById("mainOutput4").innerHTML = frequencyA;
+		document.getElementById("mainOutput5").innerHTML = frequencyB;
+		document.getElementById("mainOutput6").innerHTML = frequencyC;
+}
+</script>
 
 
 <body>
