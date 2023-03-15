@@ -50,7 +50,19 @@ Commits if the precision is better. And on the same side of the main sweep index
 
 ++++++++++++++++++*/
 
+exceptionList = new Array();
+exceptionIndex = 0;
+
 //===============================
+function setExceptions(){
+	for(gg = 0; gg < primeList.length; gg++){
+		if((theInput1 / primeList[gg]) == Math.floor(theInput1 / primeList[gg])){
+			exceptionList[exceptionIndex] = gg;
+			exceptionIndex++;
+		}
+	}
+}
+
 function init(){
 	//#######
 	//Resets variables
@@ -59,6 +71,7 @@ function init(){
 		resultIndexB = new Array(0,0,0);
 		resultIndexC = new Array(0,0,0);
 		testString = '';
+		loggedPrimes = new Array(0,0,0);
 	//#######
 	//offset between the calculated ratio and the intended ratio
 		myBrains = 0; 
@@ -70,6 +83,8 @@ function init(){
 		theRatio1 = 1 / theInput1;
 	//#######
 
+	setExceptions();
+
 	//LOOP Q
 	for(q=0; q < primeList.length; q++){
 		if(primeList[q] > theInput1){
@@ -77,31 +92,38 @@ function init(){
 		}else{
 			ratioB = primeList[q] / theInput1;
 		}
+		exceptionFlag = 0;
+		for(w=0;w<exceptionList.length;w++){
+			if(exceptionList[w] == q)
+				exceptionFlag = 1;
+		}
+		if(exceptionFlag == 0)
+			mainProcessing();
+	}
+}
 
-		//LOOP F
-		for(f=0; f < favoriteList.length ; f++){
-			pointA = f;
 
+function mainProcessing(){
+	//LOOP F
+	for(f=0; f < favoriteList.length ; f++){
+		pointA = f;
 			//LOOP I
-			for(i=0; i < frequencyList.length; i++){
-				offset00 = Math.abs(favoriteList[pointA] - frequencyList[i]);
-
+		for(i=0; i < frequencyList.length; i++){
+			offset00 = Math.abs(favoriteList[pointA] - frequencyList[i]);
 				//LOOP J
-				for(j=0; j < frequencyList.length; j++){
-					offset01 = Math.abs(favoriteList[pointA] - frequencyList[j]);
-					if(i != j && j != pointA){
-						if(offset00 > offset01){
-							ratioA = offset01 / offset00;
-						}else{
-							ratioA = offset00 / offset01;
-						}
-						calculatedOffset = Math.abs(ratioA - ratioB);
-
-						if((favoriteList[pointA] < frequencyList[i]) && (favoriteList[pointA] < frequencyList[j]))
-							validate();
-						if((favoriteList[pointA] > frequencyList[i]) && (favoriteList[pointA] > frequencyList[j]))
-							validate();
+			for(j=0; j < frequencyList.length; j++){
+				offset01 = Math.abs(favoriteList[pointA] - frequencyList[j]);
+				if(i != j && j != pointA){
+					if(offset00 > offset01){
+						ratioA = offset01 / offset00;
+					}else{
+						ratioA = offset00 / offset01;
 					}
+					calculatedOffset = Math.abs(ratioA - ratioB);
+						if((favoriteList[pointA] < frequencyList[i]) && (favoriteList[pointA] < frequencyList[j]))
+						validate();
+					if((favoriteList[pointA] > frequencyList[i]) && (favoriteList[pointA] > frequencyList[j]))
+						validate();
 				}
 			}
 		}
@@ -116,11 +138,13 @@ function validate(){
 			resultIndexA[g] = resultIndexA[g-1];
 			resultIndexB[g] = resultIndexB[g-1];
 			resultIndexC[g] = resultIndexC[g-1];
+			loggedPrimes[g] = loggedPrimes[g-1];
 		}
 		result[0] = calculatedOffset;
 		resultIndexA[0] = i;
 		resultIndexB[0] = j;
 		resultIndexC[0] = pointA;
+		loggedPrimes[0] = q;
 	}
 }
 
@@ -128,10 +152,12 @@ function update(){
 	frequencyA = '';
 	frequencyB = '';
 	frequencyC = '';
+	myPrimes = '';
 	for(g=0; g<3; g++){
 			frequencyA += frequencyList[resultIndexA[g]] + ' ';
 			frequencyB += frequencyList[resultIndexB[g]] + ' ';
 			frequencyC += favoriteList[resultIndexC[g]] + ' ';
+			myPrimes += primeList[loggedPrimes[g]] + ' ';
 			}
 		document.getElementById("mainOutput1").innerHTML = result[0];
 		document.getElementById("mainOutput2").innerHTML = result[1];
@@ -139,6 +165,7 @@ function update(){
 		document.getElementById("mainOutput4").innerHTML = frequencyA;
 		document.getElementById("mainOutput5").innerHTML = frequencyB;
 		document.getElementById("mainOutput6").innerHTML = frequencyC;
+		document.getElementById("mainOutput7").innerHTML = myPrimes;
 }
 </script>
 
@@ -170,6 +197,9 @@ function update(){
 </tr><tr>
 <td>Axis</td>
 <td><p id="mainOutput6"></p></td>
+</tr><tr>
+<td>Prime used</td>
+<td><p id="mainOutput7"></p></td>
 </tr></table>
 </div>
 </body>
