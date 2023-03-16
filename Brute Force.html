@@ -64,28 +64,21 @@ function setExceptions(){
 }
 
 function init(){
-	//#######
-	//Resets variables
-		result = new Array(99,99,99);
-		resultIndexA = new Array(0,0,0);
-		resultIndexB = new Array(0,0,0);
-		resultIndexC = new Array(0,0,0);
-		testString = '';
-		loggedPrimes = new Array(0,0,0);
-	//#######
-	//offset between the calculated ratio and the intended ratio
-		myBrains = 0; 
-		mySeek = 0;
-		pointA = 0;
-	//#######
-	//
-		theInput1 = Math.abs(Number(document.getElementById("ratio1").value));
-		theRatio1 = 1 / theInput1;
-	//#######
+	result = new Array(99,99,99);
+	resultIndexA = new Array(0,0,0);
+	resultIndexB = new Array(0,0,0);
+	resultIndexC = new Array(0,0,0);
+	testString = '';
+	loggedPrimes = new Array(0,0,0);
+	myBrains = 0; 
+	mySeek = 0;
+	pointA = 0;
+	theInput1 = Math.abs(Number(document.getElementById("ratio1").value));
+	theRatio1 = 1 / theInput1;
 
 	setExceptions();
-	exceptionIndex = 0;
 
+	exceptionIndex = 0;
 	for(u=0; u < primeList.length; u++){
 		if(theInput1 < primeList[u]){
 			exceptionIndex = u;
@@ -93,29 +86,31 @@ function init(){
 		}
 	}
 
-	//LOOP Q
-	for(q=exceptionIndex; q < primeList.length; q++){
-		if(primeList[q] > theInput1){
-			ratioB = theInput1 / primeList[q];
-		}else{
-			ratioB = primeList[q] / theInput1;
+
+	//LOOP F
+	for(f=0; f < favoriteList.length ; f++){
+		pointA = f;
+		//LOOP Q
+		for(q=exceptionIndex; q < primeList.length; q++){
+			if(primeList[q] > theInput1){
+				ratioB = theInput1 / primeList[q];
+			}else{
+				ratioB = primeList[q] / theInput1;
+			}
+			exceptionFlag = 0;
+			for(w=0;w<exceptionList.length;w++){
+				if(exceptionList[w] == q)
+					exceptionFlag = 1;
+			}
+			if(exceptionFlag == 0)
+				mainProcessing();
 		}
-		exceptionFlag = 0;
-		for(w=0;w<exceptionList.length;w++){
-			if(exceptionList[w] == q)
-				exceptionFlag = 1;
-		}
-		if(exceptionFlag == 0)
-			mainProcessing();
 	}
 }
 
 
 function mainProcessing(){
-	//LOOP F
-	for(f=0; f < favoriteList.length ; f++){
-		pointA = f;
-			//LOOP I
+		//LOOP I
 		for(i=0; i < frequencyList.length; i++){
 			offset00 = Math.abs(favoriteList[pointA] - frequencyList[i]);
 				//LOOP J
@@ -135,7 +130,6 @@ function mainProcessing(){
 				}
 			}
 		}
-	}
 	update();
 }
 
