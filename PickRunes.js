@@ -115,7 +115,7 @@ name2 = new Array(
    break;
 
   case "P14":
-   myPath = "Runes\\";
+   myPath = "Pictures13\\";
 name2 = new Array ("FREY: PASSPORT",
 "UR: BODYBUILDER",
 "THORN: ARMY LINEUP",
