@@ -97,6 +97,8 @@
 
 <td><input type="button" value="Buffer 6" onClick="setBuffer(6)"></td>
 
+<td><input type="button" value="Buffer 8" onClick="setBuffer(8)"></td>
+
 <td><input type="button" value="Buffer 9" onClick="setBuffer(9)"></td>
 
 </tr></form></table>
@@ -188,6 +190,34 @@
 <p id="text8"></p>
 </td>
 
+</tr><tr>
+
+<td>
+<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image9" onClick="addDescription(6)">
+</td>
+
+<td>
+<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image10" onClick="addDescription(6)">
+</td>
+
+<td>
+<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image11" onClick="addDescription(6)">
+</td>
+
+</tr><tr>
+
+<td>
+<p id="text9"></p>
+</td>
+
+<td>
+<p id="text10"></p>
+</td>
+
+<td>
+<p id="text11"></p>
+</td>
+
 </tr></table>
 
 <br><br><br><br>
@@ -223,12 +253,13 @@ defenitionBuffer = new Array(99,99,99);
 
 BooleanMap = new Array();
 
-BooleanMap[2] = new Array(1,1,0,0,0,0,0,0,0);
-BooleanMap[3] = new Array(1,1,1,0,0,0,0,0,0);
-BooleanMap[4] = new Array(1,1,0,1,1,0,0,0,0);
-BooleanMap[5] = new Array(1,1,1,1,1,0,0,0,0);
-BooleanMap[6] = new Array(1,1,1,1,1,1,0,0,0);
-BooleanMap[9] = new Array(1,1,1,1,1,1,1,1,1);
+BooleanMap[2] = new Array(1,1,0,0,0,0,0,0,0,0,0,0);
+BooleanMap[3] = new Array(1,1,1,0,0,0,0,0,0,0,0,0);
+BooleanMap[4] = new Array(1,1,0,1,1,0,0,0,0,0,0,0);
+BooleanMap[5] = new Array(1,1,1,1,1,0,0,0,0,0,0,0);
+BooleanMap[6] = new Array(1,1,1,1,1,1,0,0,0,0,0,0);
+BooleanMap[8] = new Array(1,1,0,1,1,0,1,1,0,1,1,0);
+BooleanMap[9] = new Array(1,1,1,1,1,1,1,1,1,0,0,0);
 
 CurrentLayout = 0;
 
@@ -286,7 +317,7 @@ function setBuffer(layout){
 	LayoutLength = 0;
 	CurrentLayout = layout;
 	max_buffered = layout;
-	for(i=0;i<9;i++){
+	for(i=0;i<12;i++){
 		if(BooleanMap[layout][i] == 1){
 			document.getElementById("image"+i).style.visibility="visible";
 			document.getElementById("text"+i).style.visibility="visible";
@@ -315,15 +346,17 @@ function bufferLess(){
 }
 
 function clearIt(){
- for(i = 0; i < 9; i++){
+ for(i = 0; i < 12; i++){
   document.getElementById("image"+i).src = "Runes/blank.jpg";
   document.getElementById("text"+i).innerHTML="";
+  document.getElementById("image"+i).style.visibility="hidden";
+  document.getElementById("text"+i).style.visibility="hidden";
  }
  for(i = 1; i <= 3; i++){
   document.getElementById("defenition"+i).innerHTML="";
   defenitionBuffer[i-1]=99;
  }
- for(i = 0; i < 9; i++)
+ for(i = 0; i < 12; i++)
   Current_Rune[i]=24;
 }
 
@@ -384,7 +417,7 @@ function move_index(match){
 function printOutput(myMatch){
 	targetImage = 0;
 //	for(g=0;g<layoutLength;g++){
-		for(i = 0 ; i < 9 ; i++){
+		for(i = 0 ; i < 12 ; i++){
 			if(BooleanMap[CurrentLayout][i] == 1){
 				temp=Current_Rune[targetImage]; 
 				if(temp==24){
