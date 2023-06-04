@@ -66,10 +66,10 @@ function setExceptions(){
 function calculateRange(){
 	exceptionIndex = 0;
 	for(t = 0;t < primeList.length; t++){
-		if(primeList[t] > theInput1 * 2)
+		if(primeList[t] > theInput1 * 1)
 			break;
 	}
-	exceptionIndex = 0;
+	exceptionIndex = t;
 }
 
 function init(){
