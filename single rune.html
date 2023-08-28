@@ -8,7 +8,7 @@
 //********************************************START
 //*********************************************Variables
 
-MAXRUNES = 5;
+MAXRUNES = 7;
 
 var rune = new Array();
 var myPath="Runes\\";
@@ -82,6 +82,7 @@ function PullOne(){
  loadImages();
  
  if(index < MAXRUNES){
+  console.log(index);
   pointer = Random(24-index);
   for(i=0; i <= pointer; i++){
    if(picked[i] == 1)
@@ -137,18 +138,27 @@ function PullOne(){
 </td><td>
 <img id="rune02" src="Runes/blank.jpg" width=200 onClick="clearOutput()"></img>
 <p id="runeid02">Blank</p>
-</td><td>
-<img id="rune03" src="Runes/blank.jpg" width=200></img>
-<p id="runeid03">Blank</p>
 </td>
-</tr></table>
-<table align="center"><tr>
+</tr><tr>
 <td>
-<img id="rune04" src="Runes/blank.jpg" width=200></img>
-<p id="runeid04">Blank</p>
+<img id="rune03" src="Runes/blank.jpg" width=200 onClick="clearOutput()"></img>
+<p id="runeid03">Blank</p>
 </td><td>
+<img id="rune04" src="Runes/blank.jpg" width=200 onClick="clearOutput()"></img>
+<p id="runeid04">Blank</p>
+</td>
+</tr><tr>
+<td>
 <img id="rune05" src="Runes/blank.jpg" width=200></img>
 <p id="runeid05">Blank</p>
+</td><td>
+<img id="rune06" src="Runes/blank.jpg" width=200></img>
+<p id="runeid06">Blank</p>
+</td>
+</tr><tr>
+<td colspan="2" align="center">
+<img id="rune07" src="Runes/blank.jpg" width=200></img>
+<p id="runeid07">Blank</p>
 </td>
 </tr></table>
 
@@ -159,6 +169,8 @@ function PullOne(){
 <p id="runetext03"></p>
 <p id="runetext04"></p>
 <p id="runetext05"></p>
+<p id="runetext06"></p>
+<p id="runetext07"></p>
 </div>
 <br><br><br><br>
 </div>
