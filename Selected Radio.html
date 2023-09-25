@@ -55,6 +55,7 @@ function init(){
 		theInput2 = Math.abs(Number(document.getElementById("ratio2").value));
 		theRatio1 = 1 / theInput1;
 		theRatio2 = 1 / theInput2;
+		someRatio = theInput1 / theInput2;
 	//#######
 	//*****************
 	//*****************LOOP F
@@ -67,8 +68,8 @@ function init(){
 		//*********************
 		//first sweep 
 */
-favoriteList[0] = document.getElementById("field10").value;
-pointA = 0;
+	favoriteList[0] = document.getElementById("field10").value;
+	pointA = 0;
 		for(i=0; i < frequencyList.length; i++){
 			if(i != pointA){
 				offsetA = Math.abs((favoriteList[pointA] - frequencyList[i]));
@@ -79,8 +80,12 @@ pointA = 0;
 				for(x=0 ;x < frequencyList.length ;x++){
 					if(i != x && i != pointA){
 						offsetB = Math.abs(favoriteList[pointA] - frequencyList[x]);
-						offsetB *= theRatio2;
-						calculatedOffset = Math.abs(targetOffset - offsetB);
+//						offsetB *= theRatio2;
+						if(offsetA < offsetB)
+							calculatedRatio = offsetA / offsetB;
+						else
+							calculatedRatio = offsetB / offsetA;
+						calculatedOffset = Math.abs(someRatio - calculatedRatio);
 						if((favoriteList[pointA] < frequencyList[i]) && (favoriteList[pointA] < frequencyList[x]))
 							validate();
 						if((favoriteList[pointA] > frequencyList[i]) && (favoriteList[pointA] > frequencyList[x]))
