@@ -31,24 +31,15 @@
 <td>Cycle A</td>
 <td><input id="field10" type="text" value="1125"></td>
 
-<td>Value 1</td>
-<td><input id="field30" type="text" value="System Used"></td>
-
 </tr><tr>
 
 <td>Cycle B</td>
 <td><input id="field20" type="text" value="1825"></td>
 
-<td>Value 2</td>
-<td><input id="field40" type="text" value="System Used"></td>
-
 </tr><tr>
 
 <td>Cycle C</td>
 <td><input id="field25" type="text" value=""></td>
-
-<td>Value 3</td>
-<td><input id="field50" type="text" value="System Used"></td>
 
 </tr><tr>
 
@@ -268,6 +259,10 @@ CurrentLayout = 0;
 
 LayoutLength = 0;
 
+MyValue1 = 0;
+MyValue2 = 0;
+MyValue3 = 0;
+
 //****************************FUNCTIONS***********************************
 
 function loadImages(){
@@ -372,30 +367,30 @@ function stop_run(){
 
 function change1(){
  ID1=setTimeout("change1();",cycleA);
- document.getElementById("field30").value = Random(24);
+ MyValue1 = Random(24);
  validate();
 }
 
 function change2(){
  ID2=setTimeout("change2();",cycleB);
- document.getElementById("field40").value = Random(24);
+ MyValue2 = Random(24);
  validate();
 }
 
 function change3(){
  ID3 = setTimeout("change3()",cycleC);
- document.getElementById("field50").value = Random(24);
+ MyValue3 = Random(24);
  validate();
 }
 
 function validate(){
 	if(optionChecked)
-		if((document.getElementById("field30").value == document.getElementById("field40").value) && (document.getElementById("field30").value == document.getElementById("field50").value)){
+		if((MyValue1 == MyValue2) && (MyValue1 == MyValue3)){
 		}else{
 			return("");
 		}
-	if(document.getElementById("field30").value == document.getElementById("field40").value){
-		pull = Number(document.getElementById("field30").value);
+	if(MyValue1 == MyValue2){
+		pull = MyValue1;
 		move_index(pull);
 		printOutput(pull);
 	}
