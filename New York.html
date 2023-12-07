@@ -67,7 +67,7 @@ function init(){
 				//**********************LOOP X
 				//**********************
 				for(x=0; x < i; x++){
-					if(frequencyList[x] != pointA){
+					if(frequencyList[x] != pointA && i != x){
 						offsetB = Math.abs(pointA - frequencyList[x]);
 						console.log(offsetA+' '+offsetB);
 						if(offsetA < offsetB)
@@ -92,7 +92,7 @@ needs to swipe the array and keep pushing the higher numbers until... no
 Start at the best result then push if it finds something higher (golf)*/
 function validate(){
 	if(calculatedOffset <= result[0]){
-//		console.log(calculatedOffset);
+		console.log(calculatedOffset);
 		//moves the object up one on the precision scale
 		for(g=2; g>0; g--){
 			result[g] = result[g-1]
@@ -105,7 +105,7 @@ function validate(){
 		result[0] = calculatedOffset;
 		resultIndexA[0] = x;
 		resultIndexB[0] = i;
-		resultIndexC[0] = pointA;
+		resultIndexC[0] = f;
 	}
 
 //Updates the results
@@ -117,7 +117,7 @@ for(g=0; g<3; g++){
 	 resultString += result[g] + ' ';
 	 frequencyA += frequencyList[resultIndexA[g]] + ' ';
 	 frequencyB += frequencyList[resultIndexB[g]] + ' ';
-	 frequencyC += pointA + ' ';
+	 frequencyC += favoriteList[g] + ' ';
 	}
 
 	document.getElementById("mainOutput1").innerHTML = result[0];
