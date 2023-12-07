@@ -56,7 +56,8 @@ function init(){
 	//*****************LOOP F
 	//*****************
 	setRegion(document.getElementById("region00").value);
-	for(f=0; f < favoriteList.length; f++){
+//	for(f=0; f < favoriteList.length; f++){
+	for(f=favoriteList.length; f >= 0; f--){
 		pointA = favoriteList[f];
 		for(i=0; i < frequencyList.length; i++){
 			if(frequencyList[i] != pointA){
@@ -90,6 +91,7 @@ needs to swipe the array and keep pushing the higher numbers until... no
 Start at the best result then push if it finds something higher (golf)*/
 function validate(){
 	if(calculatedOffset <= result[0]){
+		console.log(pointA);
 		//moves the object up one on the precision scale
 		for(g=2; g>0; g--){
 			result[g] = result[g-1]
@@ -114,7 +116,7 @@ for(g=0; g<3; g++){
 	 resultString += result[g] + ' ';
 	 frequencyA += frequencyList[resultIndexA[g]] + ' ';
 	 frequencyB += frequencyList[resultIndexB[g]] + ' ';
-	 frequencyC += favoriteList[g] + ' ';
+	 frequencyC += favoriteList[resultIndexC[g]] + ' ';
 	}
 
 	document.getElementById("mainOutput1").innerHTML = result[0];
