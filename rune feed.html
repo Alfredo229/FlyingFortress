@@ -1,4 +1,4 @@
-<html>
+#<html>
 
 <meta charset="utf-8">
 
@@ -29,12 +29,12 @@
 <table><form><tr>
 
 <td>Cycle A</td>
-<td><input id="field10" type="text" value="1125"></td>
+<td><input id="field10" type="text" value="1800"></td>
 
 </tr><tr>
 
 <td>Cycle B</td>
-<td><input id="field20" type="text" value="1825"></td>
+<td><input id="field20" type="text" value="2450"></td>
 
 </tr><tr>
 
@@ -67,6 +67,9 @@
  <option value = "P16">Picture set 16</option>
  <option value = "P17">Picture set 17</option>
  <option value = "P18">Picture set 18</option>
+ <option value = "P19">Picture set 19</option>
+ <option value = "P20">Picture set 20</option>
+ <option value = "P21" selected>Picture set 21</option>
 </select></td>
 
 </tr></form></table>
@@ -163,11 +166,11 @@
 </td>
 
 <td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image7" onClick="addDescription(6)">
+<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image7" onClick="addDescription(7)">
 </td>
 
 <td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image8" onClick="addDescription(6)">
+<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image8" onClick="addDescription(8)">
 </td>
 
 </tr><tr>
@@ -187,15 +190,15 @@
 </tr><tr>
 
 <td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image9" onClick="addDescription(6)">
+<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image9" onClick="addDescription(9)">
 </td>
 
 <td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image10" onClick="addDescription(6)">
+<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image10" onClick="addDescription(10)">
 </td>
 
 <td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image11" onClick="addDescription(6)">
+<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image11" onClick="addDescription(11)">
 </td>
 
 </tr><tr>
@@ -432,6 +435,14 @@ function printOutput(myMatch){
 }
 
 function addDescription(myRune){
+ console.log("A: "+myRune);
+ myIndex = myRune;
+ for(g=0;g<=myIndex;g++){
+  if(BooleanMap[CurrentLayout][g]==0)
+   myRune--;
+//  console.log(BooleanMap[CurrentLayout][g]);
+ }
+ console.log("B: "+myRune);
  for(i=0; i<2; i++)
   defenitionBuffer[i]=defenitionBuffer[i+1];
  defenitionBuffer[2]=Current_Rune[myRune];

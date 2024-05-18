@@ -64,6 +64,8 @@ function runLoop1(){
 
 function runLoop2(){
 	ID2 = setTimeout("runLoop2()",loop2*FACTOR);
+	if(INTEGER2 == 0)
+		return(0);
 	if(greenCap == 0){
 		myGreen += STEPPING;
 		if(myGreen >= COLOR){

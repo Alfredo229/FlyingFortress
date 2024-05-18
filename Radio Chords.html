@@ -2,7 +2,7 @@
 <head>
 <title>FM scan</title>
 
-
+<script src="RegionList.js"></script>
 
 <script>
 /*++++++++++++++++++
@@ -126,12 +126,13 @@ for(g=0; g<3; g++){
 	document.getElementById("mainOutput5").innerHTML = frequencyB;
 	document.getElementById("mainOutput6").innerHTML = frequencyC;
 }
+/*
 function setRegion(myIndex){
 switch(myIndex){
 	case "00":
 	//Montreal
-		frequencyList = new Array(885,893,903,913,919,925,935,943,951,959,969,977,985,995,1007,1015,1057,1063,1073);
-		favoriteList = new Array(1073,1057,885,893,925,985,935,943,951,959,969,977,995,1007,1015,903,1063,913,919);
+		frequencyList = new Array(885,893,903,913,919,925,935,943,951,959,969,977,985,995,1007,1057,1063,1073);
+		favoriteList = new Array(925,885,959,1073,1057,977,893,1007,935,903,913,919,943,951,985,1063,995,969);
 		break;
 	case "01":
 	//Springfield
@@ -173,11 +174,16 @@ switch(myIndex){
 		frequencyList = new Array(895,905,917,933,937,947,955,959,967,971,975,981,985,989,993,997,1001,1007,1015,1023,1027,1031,1035,1043,1049,1053,1059,1071,1077);
 		favoriteList = new Array(959,985,1007,1015,1023,895,905,917,933,937,947,955,967,971,975,981,989,993,997,1001,1027,1031,1035,1043,1049,1053,1059,1071,1077);
 		break;
+	case "09":
+	//Washington DC
+		frequencyList = new Array(885,893,901,909,939,971,987,995,1003,1011,1035,1047,1073);
+		favoriteList = new Array(1073,995,885,893,901,909,939,971,987,1003,1011,1035,1047);
+		break;
 	default:
 		alert("not here");
 	}
 }
-
+*/
 </script>
 
 
@@ -190,6 +196,7 @@ switch(myIndex){
 <br>
 <p>Region</p>
 <select id="region00" onclick="">
+ <option value = "MT">Montreal tight</option>
  <option value = "00">Montreal</option>
  <option value = "01">Springfield</option>
  <option value = "02">Sacramento</option>
@@ -199,6 +206,8 @@ switch(myIndex){
  <option value = "06">London</option>
  <option value = "07">Kiev</option>
  <option value = "08">Austin</option>
+ <option value = "09">Washington DC</option>
+ <option value = "10">Boston</option>
 </select>
 <br>
 <input type="button" value="Calculate" onClick="init()"></input>

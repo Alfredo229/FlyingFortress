@@ -8,7 +8,7 @@
 //********************************************START
 //*********************************************Variables
 
-MAXRUNES = 7;
+MAXRUNES = 10;
 
 var rune = new Array();
 var myPath="Runes\\";
@@ -59,18 +59,18 @@ function loadImages(){
 
 function printOutput(runeId){
  if(index < MAXRUNES){
-  document.getElementById("rune0"+(index+1)).src = rune[runeId].src;
-  document.getElementById("runeid0"+(index+1)).innerHTML = name2[runeId];
-  document.getElementById("runetext0"+(index+1)).innerHTML = line[runeId];
+  document.getElementById("rune"+(index)).src = rune[runeId].src;
+  document.getElementById("runeid"+(index)).innerHTML = name2[runeId];
+  document.getElementById("runetext"+(index)).innerHTML = line[runeId];
   index++;
  }
 }
 
 function clearOutput(){
  for(i=0; i<MAXRUNES; i++){
-  document.getElementById("rune0"+(i+1)).src = "Runes/blank.jpg";
-  document.getElementById("runeid0"+(i+1)).innerHTML = "Blank";
-  document.getElementById("runetext0"+(i+1)).innerHTML = "";
+  document.getElementById("rune"+(i)).src = "Runes/blank.jpg";
+  document.getElementById("runeid"+(i)).innerHTML = "Blank";
+  document.getElementById("runetext"+(i)).innerHTML = "";
   index=0;
   picked= new Array(23);
  }
@@ -97,7 +97,6 @@ function PullOne(){
 </head>
 
 <body>
-<div style="margin:auto">
 
 <div style="width:75%;margin:auto">
 <h1>Manual runic reading</h1>
@@ -129,54 +128,83 @@ function PullOne(){
  <option value = "P16">Picture set 16</option>
  <option value = "P17">Picture set 17</option>
  <option value = "P18">Picture set 18</option>
+ <option value = "P19">Picture set 19</option>
+ <option value = "P20">Picture set 20</option>
+ <option value = "P21" selected>Picture set 21</option>
 </select>
 </form>
 </div>
 
+<div style="margin:auto;float:top;width:60%;height:1000">
+
+<div style="float:left;margin:auto;width:66%">
 <table align="center"><tr>
 <td>
-<img id="rune01" src="Runes/blank.jpg" width=200 onClick="PullOne()"></img>
-<p id="runeid01">Blank</p>
+<img id="rune0" src="Runes/blank.jpg" width=200 onClick="PullOne()"></img>
+<p id="runeid0">Blank</p>
 </td><td>
-<img id="rune02" src="Runes/blank.jpg" width=200 onClick="clearOutput()"></img>
-<p id="runeid02">Blank</p>
+<img id="rune1" src="Runes/blank.jpg" width=200 onClick="clearOutput()"></img>
+<p id="runeid1">Blank</p>
 </td>
 </tr><tr>
 <td>
-<img id="rune03" src="Runes/blank.jpg" width=200 onClick="clearOutput()"></img>
-<p id="runeid03">Blank</p>
+<img id="rune2" src="Runes/blank.jpg" width=200 onClick="clearOutput()"></img>
+<p id="runeid2">Blank</p>
 </td><td>
-<img id="rune04" src="Runes/blank.jpg" width=200 onClick="clearOutput()"></img>
-<p id="runeid04">Blank</p>
+<img id="rune3" src="Runes/blank.jpg" width=200 onClick="clearOutput()"></img>
+<p id="runeid3">Blank</p>
 </td>
 </tr><tr>
 <td>
-<img id="rune05" src="Runes/blank.jpg" width=200></img>
-<p id="runeid05">Blank</p>
+<img id="rune4" src="Runes/blank.jpg" width=200></img>
+<p id="runeid4">Blank</p>
 </td><td>
-<img id="rune06" src="Runes/blank.jpg" width=200></img>
-<p id="runeid06">Blank</p>
+<img id="rune5" src="Runes/blank.jpg" width=200></img>
+<p id="runeid5">Blank</p>
+</td></tr>
+</table>
+</div>
+
+<div style="float:left;width:33%">
+<table align="center"><tr>
+<td>
+<img id="rune6" src="Runes/blank.jpg" width=200></img>
+<p id="runeid6">Blank</p>
 </td>
 </tr><tr>
-<td colspan="2" align="center">
-<img id="rune07" src="Runes/blank.jpg" width=200></img>
-<p id="runeid07">Blank</p>
+<td>
+<img id="rune7" src="Runes/blank.jpg" width=200 onClick="clearOutput()"></img>
+<p id="runeid7">Blank</p>
+</td>
+</tr><tr>
+<td>
+<img id="rune8" src="Runes/blank.jpg" width=200 onClick="clearOutput()"></img>
+<p id="runeid8">Blank</p>
+</td>
+</tr><tr>
+<td>
+<img id="rune9" src="Runes/blank.jpg" width=200 onClick="clearOutput()"></img>
+<p id="runeid9">Blank</p>
 </td>
 </tr></table>
-
-
-<div style="width:75%;margin:auto;float:top">
-<p id="runetext01"></p>
-<p id="runetext02"></p>
-<p id="runetext03"></p>
-<p id="runetext04"></p>
-<p id="runetext05"></p>
-<p id="runetext06"></p>
-<p id="runetext07"></p>
 </div>
+
+</div>
+
+<div style="float:top;width:40%;margin:auto">
+<p id="runetext0"></p>
+<p id="runetext1"></p>
+<p id="runetext2"></p>
+<p id="runetext3"></p>
+<p id="runetext4"></p>
+<p id="runetext5"></p>
+<p id="runetext6"></p>
+<p id="runetext7"></p>
+<p id="runetext8"></p>
+<p id="runetext9"></p>
+</div>
+
 <br><br><br><br>
-</div>
-
 </body>
 
 </html>
