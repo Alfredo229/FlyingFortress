@@ -11,15 +11,15 @@
 
 <body>
 
-<div id="container" style="margin:auto">
-<table align="center" width=100% border=0><td align="center">
+<div id="container" style="margin:auto;height:2000">
+<table align="center" width=700 border=0><td align="center">
 
 <h1>Live Rune reading</h1>
 
 <p>This is a live rune reading. It runs cycles which you can customize and looks for a match. You can click an image for a quote from the original texts about that rune. It would be easier to learn on the manual rune reading.</p>
 
 <form>
-<select id="constant" onclick="setValues()">
+<select id="constant" onclick="">
  <option value = "Me">Mercury/Venus</option>
  <option value = "V">Venus/Earth</option>
  <option value = "Ma">Mars/Earth</option>
@@ -29,12 +29,12 @@
 <table><form><tr>
 
 <td>Cycle A</td>
-<td><input id="field10" type="text" value="1800"></td>
+<td><input id="field10" type="text" value=""></td>
 
 </tr><tr>
 
 <td>Cycle B</td>
-<td><input id="field20" type="text" value="2450"></td>
+<td><input id="field20" type="text" value=""></td>
 
 </tr><tr>
 
@@ -71,7 +71,8 @@
  <option value = "P20">Picture set 20</option>
  <option value = "P21">Picture set 21</option>
  <option value = "P22">Picture set 22</option>
- <option value = "P23" selected>Picture set 23</option>
+ <option value = "P23">Picture set 23</option>
+ <option value = "P24" selected>Picture set 24</option>
 </select></td>
 
 </tr></form></table>
@@ -98,6 +99,8 @@
 
 <td><input type="button" value="Buffer 6" onClick="setBuffer(6)"></td>
 
+<td><input type="button" value="Buffer 7" onClick="setBuffer(7)"></td>
+
 <td><input type="button" value="Buffer 8" onClick="setBuffer(8)"></td>
 
 <td><input type="button" value="Buffer 9" onClick="setBuffer(9)"></td>
@@ -108,120 +111,64 @@
 <p id="defenition2"></p>
 <p id="defenition1"></p>
 
-<table cellSpacing=2><tr>
+<table><tr><td>
+<div style="float:top;width:700">
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image0" onClick="addDescription(0)">
+</div>
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image1" onClick="addDescription(1)">
+</div>
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image2" onClick="addDescription(2)">
+</div></td></tr></table>
+<br>
 
-<td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image0" onClick="addDescription(0)">
-</td>
+<table><tr><td>
+<div style="float:top;width:700">
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image3" onClick="addDescription(3)">
+</div>
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image4" onClick="addDescription(4)">
+</div>
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image5" onClick="addDescription(5)">
+</div></td></tr></table>
+<br>
 
-<td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image1" onClick="addDescription(1)">
-</td>
+<table><tr><td>
+<div style="float:top;width:700">
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image6" onClick="addDescription(6)">
+</div>
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image7" onClick="addDescription(7)">
+</div>
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image8" onClick="addDescription(8)">
+</div></td></tr></table>
+<br>
 
-<td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image2" onClick="addDescription(2)">
-</td>
+<table><tr><td>
+<div style="float:top;width:500">
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image9" onClick="addDescription(9)">
+</div>
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image10" onClick="addDescription(10)">
+</div></td></tr></table>
+<br>
 
-</tr><tr>
-
-<td>
-<p id="text0"></p>
-</td>
-
-<td>
-<p id="text1"></p>
-</td>
-
-<td>
-<p id="text2"></p>
-
-</td></table><table cellSpacing=2><tr>
-
-<td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image3" onClick="addDescription(3)">
-</td>
-
-<td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image4" onClick="addDescription(4)">
-</td>
-
-<td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image5" onClick="addDescription(5)">
-</td>
-
-</tr><tr>
-
-<td>
-<p id="text3"></p>
-</td>
-
-<td>
-<p id="text4"></p>
-</td>
-
-<td>
-<p id="text5"></p>
-</td>
-
-</tr><tr>
-
-<td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image6" onClick="addDescription(6)">
-</td>
-
-<td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image7" onClick="addDescription(7)">
-</td>
-
-<td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image8" onClick="addDescription(8)">
-</td>
-
-</tr><tr>
-
-<td>
-<p id="text6"></p>
-</td>
-
-<td>
-<p id="text7"></p>
-</td>
-
-<td>
-<p id="text8"></p>
-</td>
-
-</tr><tr>
-
-<td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image9" onClick="addDescription(9)">
-</td>
-
-<td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image10" onClick="addDescription(10)">
-</td>
-
-<td>
-<img src="Runes/blank.jpg" style="visibility:hidden" width=200 id="image11" onClick="addDescription(11)">
-</td>
-
-</tr><tr>
-
-<td>
-<p id="text9"></p>
-</td>
-
-<td>
-<p id="text10"></p>
-</td>
-
-<td>
-<p id="text11"></p>
-</td>
-
-</tr></table>
-
-<br><br><br><br>
+<table><tr><td>
+<div style="float:top;width:500">
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image11" onClick="addDescription(11)">
+</div>
+<div style="float:left">
+<img src="Runes/blank.jpg" style="visibility:hidden;width:0" id="image12" onClick="addDescription(12)">
+</div></td></tr></table>
+<br>
 
 </div>
 </body>
@@ -254,14 +201,15 @@ defenitionBuffer = new Array(99,99,99);
 
 BooleanMap = new Array();
 
-BooleanMap[1] = new Array(1,0,0,0,0,0,0,0,0,0,0,0);
-BooleanMap[2] = new Array(1,1,0,0,0,0,0,0,0,0,0,0);
-BooleanMap[3] = new Array(1,1,1,0,0,0,0,0,0,0,0,0);
-BooleanMap[4] = new Array(1,1,0,1,1,0,0,0,0,0,0,0);
-BooleanMap[5] = new Array(1,1,1,1,1,0,0,0,0,0,0,0);
-BooleanMap[6] = new Array(1,1,0,1,1,0,1,1,0,0,0,0);
-BooleanMap[8] = new Array(1,1,0,1,1,0,1,1,0,1,1,0);
-BooleanMap[9] = new Array(1,1,1,1,1,1,1,1,1,0,0,0);
+BooleanMap[1] = new Array(1,0,0,0,0,0,0,0,0,0,0,0,0);
+BooleanMap[2] = new Array(1,1,0,0,0,0,0,0,0,0,0,0,0);
+BooleanMap[3] = new Array(1,1,1,0,0,0,0,0,0,0,0,0,0);
+BooleanMap[4] = new Array(0,0,0,0,0,0,0,0,0,1,1,1,1);
+BooleanMap[5] = new Array(1,1,1,0,0,0,0,0,0,1,1,0,0);
+BooleanMap[6] = new Array(1,1,1,1,1,1,0,0,0,0,0,0,0);
+BooleanMap[7] = new Array(1,1,1,0,0,0,0,0,0,1,1,1,1);
+BooleanMap[8] = new Array(1,1,1,1,1,1,0,0,0,1,1,0,0);
+BooleanMap[9] = new Array(1,1,1,1,1,1,1,1,1,0,0,0,0);
 
 CurrentLayout = 0;
 
@@ -323,14 +271,16 @@ function setBuffer(layout){
 	LayoutLength = 0;
 	CurrentLayout = layout;
 	max_buffered = layout;
-	for(i=0;i<12;i++){
+	for(i=0;i<13;i++){
 		if(BooleanMap[layout][i] == 1){
 			document.getElementById("image"+i).style.visibility="visible";
-			document.getElementById("text"+i).style.visibility="visible";
+			document.getElementById("image"+i).style="width:200px";
+			//document.getElementById("text"+i).style.visibility="visible";
 			LayoutLength++;
 		}else{
 			document.getElementById("image"+i).style.visibility="hidden";
-			document.getElementById("text"+i).style.visibility="hidden";
+			document.getElementById("image"+i).style="hidden;width:0px";
+			//document.getElementById("text"+i).style.visibility="hidden";
 		}
 	}
 }
@@ -352,11 +302,11 @@ function bufferLess(){
 }
 
 function clearIt(){
- for(i = 0; i < 12; i++){
+ for(i = 0; i < 13; i++){
   document.getElementById("image"+i).src = "Runes/blank.jpg";
-  document.getElementById("text"+i).innerHTML="";
+  //document.getElementById("text"+i).innerHTML="";
   document.getElementById("image"+i).style.visibility="hidden";
-  document.getElementById("text"+i).style.visibility="hidden";
+  //document.getElementById("text"+i).style.visibility="hidden";
  }
  for(i = 1; i <= 3; i++){
   document.getElementById("defenition"+i).innerHTML="";
@@ -420,18 +370,19 @@ function move_index(match){
 //plug a few alert break points
 //************************
 //all good had to select the rune on the progress index versus the for index
+
 function printOutput(myMatch){
 	targetImage = 0;
 //	for(g=0;g<layoutLength;g++){
-		for(i = 0 ; i < 12 ; i++){
+		for(i = 0 ; i < 13 ; i++){
 			if(BooleanMap[CurrentLayout][i] == 1){
 				temp=Current_Rune[targetImage]; 
 				if(temp==24){
 					document.getElementById("image"+i).src = "Runes/blank.jpg";
-					document.getElementById("text"+i).innerHTML="";
+//					//document.getElementById("text"+i).innerHTML="";
 				}else{
 					document.getElementById("image"+i).src = rune[temp].src;
-					document.getElementById("text"+i).innerHTML=name2[temp];
+					//document.getElementById("text"+i).innerHTML=name2[temp];
 					targetImage++;
 				}
 			}

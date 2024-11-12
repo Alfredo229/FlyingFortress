@@ -15,19 +15,14 @@ function init(){
 	ratio = document.getElementById("ratio00").value / document.getElementById("ratio01").value;
 	sync = document.getElementById("param00").value;
 	myFactor = document.getElementById("factor00").value;
-//	console.log(myFactor);
 	if(ratio > 1)
 		ratio = 1 / ratio;
-//	console.log(Math.sqrt(sync));
-//	console.log(ratio);
 	for(i=0;i < primes.length;i++){
 		if(primes[i] > Math.sqrt(sync))
 			break;
 	}
-//	console.log(primes[i]);
 	myMaximum = document.getElementById("ratio01").value;
 	i--;
-//	console.log("Init point is "+primes[i]);
 	calculateValues();
 }
 
