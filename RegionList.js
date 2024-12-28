@@ -8,7 +8,7 @@ switch(myIndex){
 	case "00":
 	//Montreal
 		frequencyList = new Array(885,893,903,913,919,925,935,943,951,959,969,977,985,995,1007,1057,1063,1073);
-		favoriteList = new Array(925,885,959,1073,1057,977,893,1007,935,903,913,919,943,951,985,1063,995,969);
+		favoriteList = new Array(925,995,1073,1057,969,959,977,943,893,885,985,951,1007,935,903,913,919,1063);
 		break;
 	case "01":
 	//Springfield
@@ -53,7 +53,7 @@ switch(myIndex){
 	case "09":
 	//Washington DC
 		frequencyList = new Array(885,893,901,909,939,971,987,995,1003,1011,1035,1047,1073);
-		favoriteList = new Array(1073,995,885,893,901,909,939,971,987,1003,1011,1035,1047);
+		favoriteList = new Array(901,909,939,971,987,1003,1011,1035,1047,1073,995,885,893);
 		break;
 	case "10":
 	//Boston
