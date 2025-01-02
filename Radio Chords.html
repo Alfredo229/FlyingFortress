@@ -59,8 +59,41 @@ function init(){
 	for(f=favoriteList.length; f >= 0; f--){
 		pointA = favoriteList[f];
 
-//Scans for offset A
+//Scans for offset A, lower
 		for(i=0; i < frequencyList.length; i++){
+			if(frequencyList[i] != pointA){
+				offsetA = Math.abs((pointA - frequencyList[i]));
+
+//Scans for offset B, lower
+				for(x=0; x < i; x++){
+					if(frequencyList[x] < pointA && frequencyList[i] < pointA){
+						offsetB = Math.abs(pointA - frequencyList[x]);
+						if(offsetA < offsetB)
+							calculatedRatio = offsetA / offsetB;
+						else
+							calculatedRatio = offsetB / offsetA;
+						calculatedOffset = Math.abs(someRatio - calculatedRatio);
+						validate();
+					}
+				}
+
+//Scans for offset B, higher
+				for(x=i+1; x < frequencyList.length; x++){
+					if(frequencyList[x] > pointA && frequencyList[i] > pointA){
+						offsetB = Math.abs(pointA - frequencyList[x]);
+						if(offsetA < offsetB)
+							calculatedRatio = offsetA / offsetB;
+						else
+							calculatedRatio = offsetB / offsetA;
+						calculatedOffset = Math.abs(someRatio - calculatedRatio);
+						validate();
+					}
+				}
+			}
+		}
+/*
+//Scans for offset A, higher
+		for(i=f+1; i < frequencyList.length; i++){
 			if(frequencyList[i] != pointA){
 				offsetA = Math.abs((pointA - frequencyList[i]));
 
@@ -76,10 +109,9 @@ function init(){
 						validate();
 					}
 				}
-
 //Scans for offset B, higher
 				for(x=i+1; x < frequencyList.length; x++){
-					if(frequencyList[x] != pointA && frequencyList[i] != pointA){
+					if(frequencyList[x] > pointA && frequencyList[i] > pointA){
 						offsetB = Math.abs(pointA - frequencyList[x]);
 						if(offsetA < offsetB)
 							calculatedRatio = offsetA / offsetB;
@@ -89,8 +121,10 @@ function init(){
 						validate();
 					}
 				}
+
 			}
 		}
+*/
 	}
 }
 
