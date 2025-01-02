@@ -51,33 +51,42 @@ function init(){
 		someRatio = theInput1 / theInput2;
 		if(someRatio > 1)
 			someRatio = 1/someRatio;
-	//#######
-	//*****************
-	//*****************LOOP F
-	//*****************
 	setRegion(document.getElementById("region00").value);
-//	for(f=0; f < favoriteList.length; f++){
+
+//For some "uh" reason, I can't scan f from the bottom up. Love, Murphey.
+
+//Scans for the axis
 	for(f=favoriteList.length; f >= 0; f--){
 		pointA = favoriteList[f];
+
+//Scans for offset A
 		for(i=0; i < frequencyList.length; i++){
 			if(frequencyList[i] != pointA){
 				offsetA = Math.abs((pointA - frequencyList[i]));
-				//**********************
-				//**********************LOOP X
-				//**********************
+
+//Scans for offset B, lower
 				for(x=0; x < i; x++){
 					if(frequencyList[x] != pointA && frequencyList[i] != pointA){
 						offsetB = Math.abs(pointA - frequencyList[x]);
-						//console.log(offsetA+' '+offsetB);
 						if(offsetA < offsetB)
 							calculatedRatio = offsetA / offsetB;
 						else
 							calculatedRatio = offsetB / offsetA;
 						calculatedOffset = Math.abs(someRatio - calculatedRatio);
-						if((pointA < frequencyList[i]) && (pointA < frequencyList[x]))
-							validate();
-						if((pointA > frequencyList[i]) && (pointA > frequencyList[x]))
-							validate();
+						validate();
+					}
+				}
+
+//Scans for offset B, higher
+				for(x=i+1; x < frequencyList.length; x++){
+					if(frequencyList[x] != pointA && frequencyList[i] != pointA){
+						offsetB = Math.abs(pointA - frequencyList[x]);
+						if(offsetA < offsetB)
+							calculatedRatio = offsetA / offsetB;
+						else
+							calculatedRatio = offsetB / offsetA;
+						calculatedOffset = Math.abs(someRatio - calculatedRatio);
+						validate();
 					}
 				}
 			}
@@ -90,8 +99,7 @@ function init(){
 needs to swipe the array and keep pushing the higher numbers until... no
 Start at the best result then push if it finds something higher (golf)*/
 function validate(){
-	if(calculatedOffset <= result[0]){
-		console.log(pointA);
+	if(calculatedOffset <= result[0] && favoriteList[resultIndexC[0]] != pointA){
 		//moves the object up one on the precision scale
 		for(g=2; g>0; g--){
 			result[g] = result[g-1]
@@ -126,64 +134,6 @@ for(g=0; g<3; g++){
 	document.getElementById("mainOutput5").innerHTML = frequencyB;
 	document.getElementById("mainOutput6").innerHTML = frequencyC;
 }
-/*
-function setRegion(myIndex){
-switch(myIndex){
-	case "00":
-	//Montreal
-		frequencyList = new Array(885,893,903,913,919,925,935,943,951,959,969,977,985,995,1007,1057,1063,1073);
-		favoriteList = new Array(925,885,959,1073,1057,977,893,1007,935,903,913,919,943,951,985,1063,995,969);
-		break;
-	case "01":
-	//Springfield
-		frequencyList = new Array(881,883,889,897,901,905,909,911,919,923,927,935,939,943,947,951,961,967,973,977,987,997,1005,1011,1019,1025,1029,1037,1045,1049,1053,1055,1061,1073,1075);
-		favoriteList = new Array(1073,943,951,977,935,919,881,883,889,897,901,905,909,911,923,927,939,947,961,967,973,987,997,1005,1011,1019,1025,1029,1037,1045,1049,1053,1055,1061,1075);
-		break;
-	case "02":
-	//Sacramento
-		frequencyList = new Array(881,889,893,897,901,903,909,915,921,925,929,931,933,937,943,947,951,953,955,957,961,965,969,973,975,979,981,985,989,989,991,995,999,1005,1011,1015,1019,1025,1029,1031,1035,1039,1041,1043,1047,1051,1055,1057,1059,1061,1065,1071,1079);
-		favoriteList = new Array(893,925,943,951,969,985,995,1015,1057,1051,881,889,897,901,903,909,915,921,929,931,933,937,947,953,955,957,961,965,973,975,979,981,989,989,991,999,1005,1011,1019,1025,1029,1031,1035,1039,1041,1043,1047,1055,1059,1061,1065,1071,1079);
-		break;
-	case "03":
-	//Philadelphia
-		frequencyList = new Array(885,901,909,917,925,929,933,941,949,951,953,957,961,965,981,985,989,999,1011,1021,1025,1029,1045,1053,1061);
-		favoriteList = new Array(925,985,885,951,901,909,917,929,933,941,949,953,957,961,965,981,989,999,1011,1021,1025,1029,1045,1053,1061);
-		break;
-	case "04":
-	//New York
-		frequencyList = new Array(1043,995,1075,1011,987,1019,907,903,899,1067,1027,939,915,923,891,955,971,979,1051,963);
-		favoriteList =  new Array(995,1051,903,1043,1075,1011,987,1019,907,899,1067,1027,939,915,923,891,955,971,979,963);
-		break;
-	case "05":
-	//Moscow
-		frequencyList = new Array(875,879,883,887,891,895,899,903,908,912,916,920,924,928,932,936,940,944,948,952,956,960,964,968,972,976,980,984,988,992,996,1001,1005,1009,1012,1017,1021,1025,1030,1034,1037,1042,1047,1050,1053,1057,1062,1066,1070,1074,1078);
-		favoriteList = new Array(1057,875,879,883,887,891,895,899,903,908,912,916,920,924,928,932,936,940,944,948,952,956,960,964,968,972,976,980,984,988,992,996,1001,1005,1009,1012,1017,1021,1025,1030,1034,1037,1042,1047,1050,1053,1062,1066,1070,1074,1078);
-		break;
-	case "06":
-	//London
-		frequencyList = new Array(884,888,891,896,897,906,910,913,918,919,920,928,932,935,941,949,958,969,973,980,985,988,993,1000,1006,1009,1022,1033,1036,1044,1049,1054,1058,1062,1066,1068,1071,1073,1075,1078);
-		favoriteList =  new Array(1073,985,969,935,919,913,884,888,891,896,897,906,910,918,920,928,932,941,949,958,973,980,988,993,1000,1006,1009,1022,1033,1036,1044,1049,1054,1058,1062,1066,1068,1071,1075,1078);
-		break;
-	case "07":
-	//Kiev
-		frequencyList = new Array(884,924,928,938,942,946,952,956,960,964,968,972,976,980,985,990,994,1000,1005,1011,1015,1019,1025,1031,1036,1040,1046,1050,1055,1060,1065,1070,1079);
-		favoriteList = new Array(985,1015,884,924,928,938,942,946,952,956,960,964,968,972,976,980,990,994,1000,1005,1011,1019,1025,1031,1036,1040,1046,1050,1055,1060,1065,1070,1079);
-		break;
-	case "08":
-	//Austin
-		frequencyList = new Array(895,905,917,933,937,947,955,959,967,971,975,981,985,989,993,997,1001,1007,1015,1023,1027,1031,1035,1043,1049,1053,1059,1071,1077);
-		favoriteList = new Array(959,985,1007,1015,1023,895,905,917,933,937,947,955,967,971,975,981,989,993,997,1001,1027,1031,1035,1043,1049,1053,1059,1071,1077);
-		break;
-	case "09":
-	//Washington DC
-		frequencyList = new Array(885,893,901,909,939,971,987,995,1003,1011,1035,1047,1073);
-		favoriteList = new Array(1073,995,885,893,901,909,939,971,987,1003,1011,1035,1047);
-		break;
-	default:
-		alert("not here");
-	}
-}
-*/
 </script>
 
 
